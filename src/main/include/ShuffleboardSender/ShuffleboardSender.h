@@ -75,7 +75,7 @@ class ShuffleboardSender{
         /**
          * Updates variables by reading and configuring, and then sending the data
          * 
-         * edit boolean enable editing
+         * @param edit boolean enable editing
         */
         void update(bool edit);
 
