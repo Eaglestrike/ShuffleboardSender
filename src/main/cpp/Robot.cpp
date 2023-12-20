@@ -31,8 +31,8 @@ void Robot::RobotInit() {
 
   // This is a toggle button, with 2 different functions when on/off
   shuff_.addToggleButton("Enable other shuffleboard tab",
-                    [&]{shuff2_.enable();},     //Called when switched on
-                    [&]{shuff2_.disable();},    //Called when switched off
+                    [&]{shuff2_.enable(); std::cout<<"Switched On!"<<std::endl;},     //Called when switched on
+                    [&]{shuff2_.disable(); std::cout<<"Switched Off!"<<std::endl;},    //Called when switched off
                   false, {4,1,3,5});
 
   //Values will not be editable since shuff2_.update's EDIT is FALSE
@@ -46,8 +46,8 @@ void Robot::RobotInit() {
   shuff2_.PutNumber("random location 3", 3, {2,2});
 }
 
-
 void Robot::RobotPeriodic() {
+  //VERY IMPORTANT DO NOT FORGET OR SHUFFLEBOARDSENDER WILL NOT WORK
   shuff_.update(true); //Updates and edits values
   shuff2_.update(false); //Updates but does not update values
 }
