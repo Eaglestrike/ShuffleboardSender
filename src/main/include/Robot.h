@@ -9,6 +9,8 @@
 
 class Robot : public frc::TimedRobot {
   public:
+    Robot();
+
     void RobotInit() override;
     void RobotPeriodic() override;
 
@@ -27,5 +29,11 @@ class Robot : public frc::TimedRobot {
     void SimulationInit() override;
     void SimulationPeriodic() override;
   private:
-    ShuffleboardSender shuff_{"Sample"};
+    ShuffleboardSender shuff_{"Sample"}; // Tab will be created called "Sample", constructed in header
+    ShuffleboardSender shuff2_; //Constructed in class construtor
+
+    double number = 1;
+    bool boolean = false;
+    int integer = 0;
+    std::string string = "string";
 };
