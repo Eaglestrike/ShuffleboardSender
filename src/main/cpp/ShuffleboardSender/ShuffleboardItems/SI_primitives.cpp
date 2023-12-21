@@ -3,14 +3,14 @@
 
 //Constructor
 ShuffleboardItem<double>::ShuffleboardItem(ItemData data, double* value):
-    BaseShuffleboardItem(data)
+    BasicShuffleboardItem(data)
 {
     value_ = value;
     entry_ = ShuffleboardHelper::createItem(data, *value);
 }
 
 ShuffleboardItem<bool>::ShuffleboardItem(ItemData data, bool* value):
-    BaseShuffleboardItem(data)
+    BasicShuffleboardItem(data)
 {
     value_ = value;
     if(data.edit){
@@ -22,7 +22,7 @@ ShuffleboardItem<bool>::ShuffleboardItem(ItemData data, bool* value):
 }
 
 ShuffleboardItem<int>::ShuffleboardItem(ItemData data, int* value):
-    BaseShuffleboardItem(data)
+    BasicShuffleboardItem(data)
 {
     value_ = value;
     entry_ = ShuffleboardHelper::createItem(data, *value);

@@ -5,7 +5,10 @@
 #pragma once
 
 #include <frc/TimedRobot.h>
-#include <ShuffleboardSender/ShuffleboardSender.h>
+
+#include "ShuffleboardSender/ShuffleboardSender.h"
+#include "Util/thirdparty/simplevectors.hpp"
+#include "Util/ShuffleboardItems/SI_Vector.hpp"
 
 class Robot : public frc::TimedRobot {
   public:
@@ -36,4 +39,6 @@ class Robot : public frc::TimedRobot {
     bool boolean = false;
     int integer = 0;
     std::string string = "string";
+
+    svector::Vector2D vector = {3, 5};
 };

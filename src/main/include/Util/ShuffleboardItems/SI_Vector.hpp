@@ -1,24 +1,24 @@
 #pragma once
 
-#include "Util/Point.h"
+#include "Util/thirdparty/simplevectors.hpp"
 #include "ShuffleboardSender/ShuffleboardItem.h"
 
-template<> class ShuffleboardItem<Point>: public BasicShuffleboardItem{
+template<> class ShuffleboardItem<svector::Vector2D>: public BasicShuffleboardItem{
     public:
-        ShuffleboardItem(ItemData data, Point* value):
+        ShuffleboardItem(ItemData data, svector::Vector2D* value):
             BasicShuffleboardItem(data)
         {
             value_ = value;
 
             if(data_.tab){
                 frc::ShuffleboardLayout* pointLayout = ShuffleboardHelper::createList(data);
-                entry_[0] = pointLayout->Add("X", value->getX()).GetEntry();   
-                entry_[1] = pointLayout->Add("Y", value->getY()).GetEntry();
+                entry_[0] = pointLayout->Add("X", value->x()).GetEntry();   
+                entry_[1] = pointLayout->Add("Y", value->y()).GetEntry();
             }
         }
 
         bool itemHasChanged() override{
-            Point newVal = *value_;
+            svector::Vector2D newVal = *value_;
             bool hasChanged = (prevVal_ != newVal);
             prevVal_ = newVal;
             return hasChanged;
@@ -32,8 +32,8 @@ template<> class ShuffleboardItem<Point>: public BasicShuffleboardItem{
             }
             data_.tab = tab;
             frc::ShuffleboardLayout* pointLayout = ShuffleboardHelper::createList(data_);
-            entry_[0] = pointLayout->Add("X", value_->getX()).GetEntry();   
-            entry_[1] = pointLayout->Add("Y", value_->getY()).GetEntry();
+            entry_[0] = pointLayout->Add("X", value_->x()).GetEntry();   
+            entry_[1] = pointLayout->Add("Y", value_->y()).GetEntry();
         }
 
         void disable() override{
@@ -42,16 +42,16 @@ template<> class ShuffleboardItem<Point>: public BasicShuffleboardItem{
         
     private:
         void send() override{
-            entry_[0]->SetDouble(value_->getX());
-            entry_[1]->SetDouble(value_->getY());
+            entry_[0]->SetDouble(value_->x());
+            entry_[1]->SetDouble(value_->y());
         }
 
         void edit() override{
-            value_->setX(entry_[0]->GetDouble(value_->getX()));
-            value_->setY(entry_[1]->GetDouble(value_->getY()));
+            value_->x(entry_[0]->GetDouble(value_->x()));
+            value_->y(entry_[1]->GetDouble(value_->y()));
         }
 
-        Point prevVal_;
-        Point* value_;
+        svector::Vector2D prevVal_;
+        svector::Vector2D* value_;
         nt::GenericEntry* entry_[2]; //[x, y]
 };

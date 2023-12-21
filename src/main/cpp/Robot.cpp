@@ -44,6 +44,8 @@ void Robot::RobotInit() {
   shuff2_.PutNumber("random location 1", 1);
   shuff2_.PutNumber("random location 2", 2, {2,1});
   shuff2_.PutNumber("random location 3", 3, {2,2});
+
+  shuff2_.add("vector", &vector); //Vector from SI_Vector.hpp
 }
 
 void Robot::RobotPeriodic() {

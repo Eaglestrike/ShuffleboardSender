@@ -1,7 +1,7 @@
 #include "ShuffleboardSender/ShuffleboardItems/SI_PIDController.h"
 
 ShuffleboardItem<frc::PIDController>::ShuffleboardItem(ItemData data, frc::PIDController* value):
-    BaseShuffleboardItem(data)
+    BasicShuffleboardItem(data)
 {
     value_ = value;
 
