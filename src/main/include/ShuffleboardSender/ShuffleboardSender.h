@@ -40,7 +40,12 @@ class ShuffleboardSender{
                     return;
                 }
             }
-            items_.push_back(new ShuffleboardItem({name, tab_, edit}, o));
+            if(o){
+                items_.push_back(new ShuffleboardItem({name, tab_, edit}, o));
+            }
+            else{
+                std::cout<<"Null pointer to " << name << std::endl;
+            }
         }
         
         /**
@@ -57,7 +62,12 @@ class ShuffleboardSender{
                     return;
                 }
             }
-            items_.push_back(new ShuffleboardItem({name, tab_, edit, pose}, o));
+            if(o){
+                items_.push_back(new ShuffleboardItem({name, tab_, edit, pose}, o));
+            }
+            else{
+                std::cout<<"Null pointer to " << name << std::endl;
+            }
         }
         
         /**
